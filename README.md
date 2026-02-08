@@ -4,6 +4,26 @@
 ## 📌 Project Overview
 This project explores **stock price volatility** and applies **portfolio simulation** techniques to identify optimal investment strategies. Using Python, we analyze historical stock data, compute volatility metrics, and run Monte Carlo simulations to construct the **Efficient Frontier** of risk vs. return.
 
+## Project Question & Scope
+
+This project investigates how portfolio construction techniques can be used to balance
+return and risk more effectively than naïve allocation strategies using historical stock data.
+
+The analysis focuses on:
+- Measuring asset-level volatility and correlation
+- Simulating thousands of portfolio allocations
+- Evaluating risk-return tradeoffs via the Efficient Frontier
+- Identifying portfolios with superior risk-adjusted performance
+
+### Assumptions & Scope
+- Historical returns are used as descriptive inputs, not forecasts
+- Returns are assumed to be weakly stationary over the analysis window
+- Transaction costs and taxes are excluded to isolate portfolio risk dynamics
+
+The goal is not to predict market performance, but to understand structural tradeoffs
+in portfolio construction under uncertainty.
+
+
 The project demonstrates:
 - Data sourcing from financial APIs
 - Data cleaning & preprocessing
