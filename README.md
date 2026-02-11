@@ -51,6 +51,28 @@ The project demonstrates:
 
 ---
 
+### Asset Universe
+The analysis focuses on six large-cap U.S. equities selected to represent
+distinct economic sectors and risk drivers:
+
+- NVDA (Semiconductors / AI Growth)
+- MSFT (Enterprise Technology)
+- JNJ (Defensive Healthcare)
+- JPM (Financials)
+- RTX (Industrials & Defense)
+- V (Payments & Consumer Transactions)
+
+This universe was chosen to emphasize diversification, correlation structure,
+and interpretability rather than return maximization.
+
+### Time Horizon
+- Daily data from approximately 2014–2024 (10-year window)
+
+### Benchmark
+- S&P 500 Index (^GSPC)
+
+---
+
 ## 📈 Key Findings (to be updated as analysis progresses)
 - Example: *“A portfolio of [AAPL, JNJ, NVDA] produced the highest Sharpe ratio of 1.45.”*  
 - Example: *“Rolling volatility for TSLA was 2x higher than AAPL during 2020–2021.”*  
