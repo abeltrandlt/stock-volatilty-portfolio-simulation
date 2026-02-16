@@ -74,8 +74,33 @@ and interpretability rather than return maximization.
 ---
 
 ## 📈 Key Findings (to be updated as analysis progresses)
-- Example: *“A portfolio of [AAPL, JNJ, NVDA] produced the highest Sharpe ratio of 1.45.”*  
-- Example: *“Rolling volatility for TSLA was 2x higher than AAPL during 2020–2021.”*  
+To evaluate portfolio robustness, we compared four strategies:
+
+Unconstrained Max Sharpe
+
+Constrained Max Sharpe (40% cap)
+
+Minimum Volatility
+
+Equal Weight
+
+S&P 500 Benchmark
+
+Key Findings
+
+The unconstrained portfolio achieved the highest return but experienced severe concentration risk (69% NVDA) and a maximum drawdown of -55.6%.
+
+Imposing a 40% weight cap reduced drawdown to -41.4%, while maintaining a strong Sharpe ratio (1.41 vs 1.47).
+
+The minimum volatility portfolio provided the strongest downside protection, with the lowest daily VaR and CVaR.
+
+During the COVID stress period, correlations increased across assets, weakening diversification. However, the constrained portfolio exhibited the most balanced performance under stress.
+
+A modest reduction in theoretical optimality significantly improved portfolio robustness.
+
+Strategic Insight
+
+Unconstrained optimization maximizes performance under historical assumptions but introduces fragility. Incorporating realistic constraints enhances diversification and resilience with minimal sacrifice in risk-adjusted returns. 
 
 ---
 
