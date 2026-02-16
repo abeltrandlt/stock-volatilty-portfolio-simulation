@@ -76,17 +76,15 @@ and interpretability rather than return maximization.
 ## 📈 Key Findings (to be updated as analysis progresses)
 To evaluate portfolio robustness, we compared four strategies:
 
-Unconstrained Max Sharpe
+- Unconstrained Max Sharpe
 
-Constrained Max Sharpe (40% cap)
+- Constrained Max Sharpe (40% cap)
 
-Minimum Volatility
+- Minimum Volatility
 
-Equal Weight
+- Equal Weight
 
-S&P 500 Benchmark
-
-Key Findings
+- S&P 500 Benchmark
 
 The unconstrained portfolio achieved the highest return but experienced severe concentration risk (69% NVDA) and a maximum drawdown of -55.6%.
 
