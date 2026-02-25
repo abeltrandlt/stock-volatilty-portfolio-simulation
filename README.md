@@ -2,7 +2,7 @@
 # Stock Price Volatility & Portfolio Simulation
 
 ## 📌 Project Overview
-This project explores **stock price volatility** and applies **portfolio simulation** techniques to identify optimal investment strategies. Using Python, we analyze historical stock data, compute volatility metrics, and run Monte Carlo simulations to construct the **Efficient Frontier** of risk vs. return.
+This project analyzed equity portfolio construction across multiple market regimes using historical return and covariance estimation.
 
 ## Project Question & Scope
 
@@ -74,31 +74,19 @@ and interpretability rather than return maximization.
 ---
 
 ## 📈 Key Findings (to be updated as analysis progresses)
-To evaluate portfolio robustness, we compared four strategies:
+* Unconstrained optimization produced extreme concentration (up to 70% NVDA), resulting in severe drawdowns (-55%).
 
-- Unconstrained Max Sharpe
+* Introducing a 40% weight cap significantly reduced tail risk while maintaining strong risk-adjusted performance.
 
-- Constrained Max Sharpe (40% cap)
+* During the COVID shock, correlations increased and volatility spiked, compressing diversification benefits across all portfolios.
 
-- Minimum Volatility
+* Efficient frontiers shifted materially across regimes, demonstrating that “optimal” portfolios are highly dependent on market conditions.
 
-- Equal Weight
-
-- S&P 500 Benchmark
-
-The unconstrained portfolio achieved the highest return but experienced severe concentration risk (69% NVDA) and a maximum drawdown of -55.6%.
-
-Imposing a 40% weight cap reduced drawdown to -41.4%, while maintaining a strong Sharpe ratio (1.41 vs 1.47).
-
-The minimum volatility portfolio provided the strongest downside protection, with the lowest daily VaR and CVaR.
-
-During the COVID stress period, correlations increased across assets, weakening diversification. However, the constrained portfolio exhibited the most balanced performance under stress.
-
-A modest reduction in theoretical optimality significantly improved portfolio robustness.
+* Constrained portfolios exhibited more stable allocations and improved resilience under stress.
 
 Strategic Insight
 
-Unconstrained optimization maximizes performance under historical assumptions but introduces fragility. Incorporating realistic constraints enhances diversification and resilience with minimal sacrifice in risk-adjusted returns. 
+Portfolio optimization under ideal assumptions maximizes theoretical performance but introduces fragility. Incorporating realistic constraints and stress testing across regimes leads to more robust and implementable investment strategies.
 
 ---
 
