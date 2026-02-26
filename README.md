@@ -137,6 +137,14 @@ reports/ # Exported figures and executive summary
 
 ## 📸 Core Visualizations
 
+## Efficient Frontier (Constrained vs Unconstrained)
+
+![Efficient Frontier](reports/figures/frontier_uncon_vs_con.png)
+
+## Efficient Frontier by Regime
+
+![Frontier by Regime](reports/figures/frontier_by_regime.png)
+
 - Correlation heatmap of asset returns
 - Rolling volatility by asset
 - Efficient frontier (unconstrained vs constrained)
