@@ -210,3 +210,7 @@ __marimo__/
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
 
+
+# Raw data (reproducible via notebooks)
+data/raw/
+
