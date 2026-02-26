@@ -1,147 +1,177 @@
-```markdown
 # Stock Price Volatility & Portfolio Simulation
 
 ## 📌 Project Overview
-This project analyzed equity portfolio construction across multiple market regimes using historical return and covariance estimation.
 
-## Project Question & Scope
+This project analyzes equity portfolio construction across multiple market regimes using historical return and covariance estimation.
 
-This project investigates how portfolio construction techniques can be used to balance
-return and risk more effectively than naïve allocation strategies using historical stock data.
-
-The analysis focuses on:
-- Measuring asset-level volatility and correlation
-- Simulating thousands of portfolio allocations
-- Evaluating risk-return tradeoffs via the Efficient Frontier
-- Identifying portfolios with superior risk-adjusted performance
-
-### Assumptions & Scope
-- Historical returns are used as descriptive inputs, not forecasts
-- Returns are assumed to be weakly stationary over the analysis window
-- Transaction costs and taxes are excluded to isolate portfolio risk dynamics
-
-The goal is not to predict market performance, but to understand structural tradeoffs
-in portfolio construction under uncertainty.
-
-
-The project demonstrates:
-- Data sourcing from financial APIs
-- Data cleaning & preprocessing
-- Volatility analysis (daily returns, rolling windows, VaR)
-- Portfolio simulations (Monte Carlo, Sharpe ratio optimization)
-- Visualization of key findings (heatmaps, efficient frontier, interactive plots)
+The objective is not to predict stock prices, but to evaluate how portfolio optimization behaves under uncertainty, how diversification works in practice, and how constraints improve robustness.
 
 ---
 
-## 📊 Data Sources
-- **Yahoo Finance API (`yfinance`)**
-- **Alpha Vantage API** (optional, for extended data)
-- **Quandl (NASDAQ)** (optional, additional datasets)
-- Market benchmarks: S&P 500, NASDAQ, Dow Jones
+## 🎯 Project Question
+
+How can portfolio construction techniques balance return and risk more effectively than naïve allocation strategies using historical stock data?
+
+Specifically:
+
+- How volatile are individual assets?
+- How does correlation structure affect diversification?
+- What trade-offs emerge across thousands of simulated portfolios?
+- How do optimal allocations change across market regimes?
+- Does imposing realistic constraints improve robustness?
 
 ---
 
-## 🛠️ Methodology
-1. **Data Collection** – Pull historical stock prices (AAPL, MSFT, TSLA, AMZN, JNJ, NVDA).  
-2. **Data Cleaning** – Handle missing values, adjust for splits/dividends, format dates.  
-3. **Volatility Analysis** – Daily/annualized volatility, rolling windows, Value at Risk.  
-4. **Portfolio Simulation** – Monte Carlo simulation of 10,000+ random portfolios, risk-return trade-offs.  
-5. **Optimization** – Identify max Sharpe ratio & minimum volatility portfolios.  
-6. **Visualization** – Efficient frontier, correlation heatmaps, return distributions.  
+## 🔍 Scope & Assumptions
+
+- Historical returns are used as descriptive inputs, not forecasts.
+- Returns are assumed weakly stationary within defined regime windows.
+- Transaction costs and taxes are excluded to isolate structural portfolio behavior.
+- Equity-only universe to maintain interpretability.
+
+The goal is to understand structural trade-offs in portfolio construction — not to build a trading strategy.
 
 ---
 
-### Asset Universe
-The analysis focuses on six large-cap U.S. equities selected to represent
-distinct economic sectors and risk drivers:
+## 🧠 Asset Universe
 
-- NVDA (Semiconductors / AI Growth)
-- MSFT (Enterprise Technology)
-- JNJ (Defensive Healthcare)
-- JPM (Financials)
-- RTX (Industrials & Defense)
-- V (Payments & Consumer Transactions)
+Six large-cap U.S. equities selected to represent distinct economic risk drivers:
 
-This universe was chosen to emphasize diversification, correlation structure,
-and interpretability rather than return maximization.
+- **NVDA** – Semiconductors / AI Growth  
+- **MSFT** – Enterprise Technology  
+- **JNJ** – Defensive Healthcare  
+- **JPM** – Financials  
+- **RTX** – Industrials & Defense  
+- **V** – Payments / Consumer Transactions  
 
-### Time Horizon
-- Daily data from approximately 2014–2024 (10-year window)
-
-### Benchmark
-- S&P 500 Index (^GSPC)
+These assets were intentionally chosen for diversification analysis rather than return maximization.
 
 ---
 
-## 📈 Key Findings (to be updated as analysis progresses)
-* Unconstrained optimization produced extreme concentration (up to 70% NVDA), resulting in severe drawdowns (-55%).
+## 📅 Time Horizon
 
-* Introducing a 40% weight cap significantly reduced tail risk while maintaining strong risk-adjusted performance.
+- Daily data from **2014–2024**
+- Approximately 10 years of market regimes including:
+  - Pre-COVID stability
+  - COVID shock
+  - Post-COVID recovery and rate cycle
 
-* During the COVID shock, correlations increased and volatility spiked, compressing diversification benefits across all portfolios.
+---
 
-* Efficient frontiers shifted materially across regimes, demonstrating that “optimal” portfolios are highly dependent on market conditions.
+## 📊 Benchmark
 
-* Constrained portfolios exhibited more stable allocations and improved resilience under stress.
+- **S&P 500 Index (^GSPC)**
 
-Strategic Insight
+Used for performance and risk comparison.
 
-Portfolio optimization under ideal assumptions maximizes theoretical performance but introduces fragility. Incorporating realistic constraints and stress testing across regimes leads to more robust and implementable investment strategies.
+---
+
+## 🛠 Methodology
+
+### Phase 1–2: Data Engineering
+- Pulled historical daily prices via `yfinance`
+- Extracted Adjusted Close prices
+- Aligned assets on common trading dates
+- Computed daily return matrix
+
+### Phase 3–4: Risk Structure Analysis
+- Annualized return and volatility
+- Covariance and correlation matrices
+- Rolling volatility analysis
+- Diversification diagnostics (average correlation, marginal contribution to risk)
+
+### Phase 5: Monte Carlo Portfolio Simulation
+- Simulated 30,000+ portfolios
+- Constructed Efficient Frontier
+- Identified:
+  - Max Sharpe Portfolio
+  - Minimum Volatility Portfolio
+  - Equal Weight Baseline
+
+### Phase 5.5: Professional Constraint Upgrade
+- Introduced 3% risk-free rate
+- Applied 40% weight cap
+- Compared unconstrained vs constrained frontier
+
+### Phase 6: Downside Risk & Stress Testing
+- Historical VaR and CVaR (95% & 99%)
+- Maximum drawdown
+- Worst daily loss
+- COVID stress-window analysis
+
+### Phase 7: Regime Analysis
+- Re-estimated covariance per regime:
+  - Pre-COVID (2017–2019)
+  - COVID Shock (2020 H1)
+  - Post-COVID (2021–2024)
+- Reconstructed constrained frontiers per regime
+- Analyzed weight evolution across macro environments
+
+---
+
+## 📈 Key Findings
+
+- Unconstrained optimization produced extreme concentration (up to 70% NVDA), resulting in severe drawdowns (-55%).
+- Introducing a 40% weight cap reduced drawdown materially (-41%) while maintaining strong risk-adjusted performance.
+- During the COVID shock, correlations increased sharply, compressing diversification benefits.
+- Efficient frontiers shifted materially across regimes, demonstrating that optimal portfolios are highly environment-dependent.
+- Constrained portfolios exhibited more stable allocations and improved resilience under stress.
+
+---
+
+## 💡 Strategic Insight
+
+Mean-variance optimization maximizes theoretical performance under historical assumptions but can introduce fragility due to noisy mean estimates.
+
+Incorporating realistic constraints and stress testing across regimes leads to more robust, implementable portfolio strategies.
 
 ---
 
 ## 📂 Project Structure
-```
-
-data/           # raw & processed stock datasets
-notebooks/      # Jupyter notebooks for analysis
-src/            # Reusable Python scripts (cleaning, simulation, visualization)
-reports/        # Figures and summary documentation
-
-````
+data/ # Raw and processed datasets
+notebooks/ # Phase-based Jupyter notebooks
+src/ # Reusable simulation and cleaning functions
+reports/ # Exported figures and executive summary
 
 ---
 
-## 📸 Visualizations
-- Stock price trends  
-- Rolling volatility  
-- Correlation heatmap of returns  
-- Efficient frontier with optimal portfolios  
+## 📸 Core Visualizations
 
-(Example charts to be added here)
+- Correlation heatmap of asset returns
+- Rolling volatility by asset
+- Efficient frontier (unconstrained vs constrained)
+- Tail risk comparison (VaR / CVaR / Drawdown)
+- Efficient frontier by market regime
 
 ---
 
 ## 🚀 How to Run
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/USERNAME/stock-volatility-portfolio-simulation.git
-   cd stock-volatility-portfolio-simulation
-````
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/USERNAME/stock-volatility-portfolio-simulation.git
+cd stock-volatility-portfolio-simulation
 
 2. Create and activate environment
+conda create -n data_env python=3.10 -y
+conda activate data_env
+pip install -r requirements.txt
 
-   ```bash
-   conda create -n data_env python=3.10 -y
-   conda activate data_env
-   pip install -r requirements.txt
-   ```
-3. Run notebooks in `/notebooks`.
+3. Run notebooks sequentially from /notebooks
 
 ---
 
-## 📌 Future Work
+## Limitations
 
-* Incorporate **GARCH/ARCH** models for volatility forecasting
-* Backtest portfolios against historical performance
-* Extend analysis to **crypto and ETFs**
-* Build a **Tableau/Power BI dashboard**
+- Historical return estimates are noisy and regime-dependent.
+- Covariance assumed stable within regime windows.
+- No transaction costs, taxes, or liquidity constraints modeled
+- Equity-only universe
 
 ---
+## Requirements
 
-## ⚙️ Requirements
-
-```
 pandas
 numpy
 matplotlib
@@ -149,5 +179,3 @@ seaborn
 plotly
 yfinance
 scipy
-
-```
