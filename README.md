@@ -128,10 +128,15 @@ Incorporating realistic constraints and stress testing across regimes leads to m
 ---
 
 ## 📂 Project Structure
-data/ # Raw and processed datasets
-notebooks/ # Phase-based Jupyter notebooks
-src/ # Reusable simulation and cleaning functions
-reports/ # Exported figures and executive summary
+```
+
+stock-volatility-portfolio-analysis/
+├── data/                              # Raw and processed datasets
+├── notebooks/                         # Phase-based Jupyter Notebooks
+├── src/                               # Reusable simulation and cleaning functions
+├── reports/                           # Exported figures and executive summary
+└── README.md
+```
 
 ---
 
